@@ -4,16 +4,17 @@ A REST API for Parts Unlimited product catalog that allows for CRUD operations o
 
 ## Setup
 
-1. Clone this repository
-2. Create a virtual environment: `python -m venv venv`
-3. Activate the virtual environment:
+1. This project is using Python 3.11.7
+2. Clone this repository
+3. Create a virtual environment: `python -m venv venv`
+4. Activate the virtual environment:
    - Windows: `venv\Scripts\activate`
    - macOS/Linux: `source venv/bin/activate`
-4. Install dependencies: `pip install -r requirements.txt`
-5. Set up environment variables (copy `.env.example` to `.env` and adjust values)
-6. Run database migrations: `alembic upgrade head`
-7. Start the application: `uvicorn main:app --reload`
-8. To access documentation just add `/docs` at the end of the URL. Example: `http://127.0.0.1:8000/docs`
+5. Install dependencies: `pip install -r requirements.txt`
+6. Set up environment variables (copy `.env.example` to `.env` and adjust values)
+7. Run database migrations: `alembic upgrade head`. (This will create the SQLite Database and add some data)
+8. Start the application: `uvicorn main:app --reload`
+9. To access documentation just add `/docs` at the end of the URL. Example: `http://127.0.0.1:8000/docs`
 
 ## Features
 
