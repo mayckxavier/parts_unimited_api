@@ -13,6 +13,7 @@ A REST API for Parts Unlimited product catalog that allows for CRUD operations o
 5. Set up environment variables (copy `.env.example` to `.env` and adjust values)
 6. Run database migrations: `alembic upgrade head`
 7. Start the application: `uvicorn main:app --reload`
+8. To access documentation just add `/docs` at the end of the URL. Example: `http://127.0.0.1:8000/docs`
 
 ## Features
 
