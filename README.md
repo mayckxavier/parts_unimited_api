@@ -12,7 +12,7 @@ A REST API for Parts Unlimited product catalog that allows for CRUD operations o
 4. Install dependencies: `pip install -r requirements.txt`
 5. Set up environment variables (copy `.env.example` to `.env` and adjust values)
 6. Run database migrations: `alembic upgrade head`
-7. Start the application: `python main.py`
+7. Start the application: `uvicorn main:app --reload`
 
 ## Features
 
