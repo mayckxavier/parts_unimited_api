@@ -40,23 +40,14 @@ class PartService:
 
     @staticmethod
     def get_part(db: Session, part_id: int) -> Optional[Part]:
-        """
-        Get a part by ID
-        """
         return db.query(Part).filter(Part.id == part_id).first()
 
     @staticmethod
     def get_part_by_sku(db: Session, sku: str) -> Optional[Part]:
-        """
-        Get a part by SKU
-        """
         return db.query(Part).filter(Part.sku == sku).first()
 
     @staticmethod
     def create_part(db: Session, part_data: PartCreate) -> Part:
-        """
-        Create a new part
-        """
         try:
             db_part = Part(**part_data.model_dump())
             db.add(db_part)
@@ -73,9 +64,6 @@ class PartService:
             part_id: int,
             part_data: PartUpdate
     ) -> Optional[Part]:
-        """
-        Update a part
-        """
         db_part = PartService.get_part(db, part_id)
         if db_part:
             # Filter out None values to avoid overriding with None
@@ -93,9 +81,6 @@ class PartService:
 
     @staticmethod
     def delete_part(db: Session, part_id: int) -> bool:
-        """
-        Delete a part
-        """
         db_part = PartService.get_part(db, part_id)
         if db_part:
             db.delete(db_part)

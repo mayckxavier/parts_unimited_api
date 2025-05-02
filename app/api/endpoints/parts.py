@@ -6,8 +6,13 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.schemas.part import Part, PartCreate, PartUpdate, PartList
 from app.services.part_service import PartService
+from app.services.text_analysis_service import TextAnalysisService
+
+from typing import List
+from app.schemas.text_analysis import CommonWord
 
 router = APIRouter()
+
 
 @router.get("/", response_model=PartList)
 def read_parts(
@@ -18,7 +23,6 @@ def read_parts(
         sku: Optional[str] = None,
         is_active: Optional[bool] = None
 ):
-
     # Calculate skip for pagination
     skip = (page - 1) * page_size
 
@@ -38,6 +42,14 @@ def read_parts(
     )
 
     return result
+
+
+@router.get("/common-words", response_model=List[CommonWord])
+def read_common_words(
+        limit: int = Query(5, ge=1, le=50, description="Number of common words to return"),
+        db: Session = Depends(get_db)
+):
+    return TextAnalysisService.get_common_words(db=db, limit=limit)
 
 
 @router.get("/{part_id}", response_model=Part)
